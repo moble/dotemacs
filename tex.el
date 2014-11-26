@@ -15,18 +15,27 @@
 (setq reftex-plug-into-AUCTeX t)
 (setq LaTeX-command-default "run")
 (setq TeX-command-default "run")
-;; The following only works with AUCTeX loaded
-                                        ;(load "auctex.el" nil t t)
-                                        ;(require 'tex-site)
 (add-hook 'TeX-mode-hook
-          (lambda ()
-            (add-to-list 'TeX-output-view-style
-                         '("^pdf$" "."
-                           "/Applications/Skim.app/Contents/SharedSupport/displayline %n %o %b && osascript -e 'tell application \"Skim\" to set bounds of window 1 to {710, 0, 1450, 877}'"))
-            (add-to-list 'TeX-command-list
-                         '("run" "latexmk %s" TeX-run-command t t :help "Run latexmk") t)
-            )
-          )
+  (lambda ()
+    ;; (add-to-list 'TeX-output-view-style
+    ;;   '("^pdf$" "."
+    ;;     "/Applications/Skim.app/Contents/SharedSupport/displayline %n %o %b && osascript -e 'tell application \"Skim\" to set bounds of window 1 to {710, 0, 1450, 877}'")
+    ;; )
+    ;; (add-to-list 'TeX-view-program-list
+    ;;   '(
+    ;;      ("Skim-displayline-locate" "/Applications/Skim.app/Contents/SharedSupport/displayline %n %o %b && osascript -e 'tell application \"Skim\" to set bounds of window 1 to {710, 0, 1450, 877}'")
+    ;;      ("Skim-displayline" "/Applications/Skim.app/Contents/SharedSupport/displayline %n %o %b")
+    ;;   )
+    ;; )
+    (add-to-list 'TeX-view-program-list
+      '("displayline-locate"
+        (concatenate
+         "/Applications/Skim.app/Contents/SharedSupport/displayline -b -g %n %o %b "
+         "&& osascript -e 'tell application \"Skim\" to set bounds of window 1 to {580, 0, 1450, 877}'")))
+    (add-to-list 'TeX-view-program-selection '(output-pdf "displayline-locate"))
+    ('TeX-command-extra-options " -file-line-error -synctex=1 -shell-escape ")
+  )
+)
 
 ;;;; BIBTeX
 (add-hook
