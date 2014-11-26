@@ -1,6 +1,8 @@
 (defun kill-other-buffer-and-window () (interactive)
   (other-window 1)
   (kill-buffer-and-window))
+
+;; Resize and reshape the window
 (defun set-frame-position-one () (interactive)
   (set-frame-position (selected-frame) 0 0)
   )
@@ -19,23 +21,26 @@
 (defun set-frame-size-full () (interactive)
   (set-frame-size (selected-frame) 142 42)
   )
+
+;; Make the window transparent
 (defun transparency (value)
   "Sets the transparency of the frame window. 0=transparent/100=opaque"
   (interactive "nTransparency Value 0 - 100 opaque:")
   (set-frame-parameter (selected-frame) 'alpha value)
   )
+
+;; To switch between my bright and dark themes
 (defun night ()
   "Load the wombat theme, appropriate for nighttime work."
   (interactive)
-                                        ;(load-theme 'solarized-dark t)
   (load-theme 'wombat t)
   )
 (defun day ()
   "Disable the wombat theme, for bright environments, where wombat is hard to see."
   (interactive)
-                                        ;(load-theme 'solarized-light t)
   (disable-theme 'wombat)
   )
+
 ;;; Stefan Monnier <foo at acm.org>. It is the opposite of fill-paragraph
 (defun unfill-paragraph ()
   "Takes a multi-line paragraph and makes it into a single line of text."
@@ -43,6 +48,8 @@
   (let ((fill-column (point-max)))
     (fill-paragraph nil))
   )
+
+;; Swap strings of characters (a bit finicky, but better than nothing)
 ;;; http://stackoverflow.com/q/768243/1194883
 (defun swap-words (a b)
   "Replace all occurances of a with b and vice versa"
@@ -64,6 +71,8 @@
             (replace-match (regexp-quote a)))
         )
       )))
+
+;; When going to the next/previous, skip buffers starting with "*"
 ;; http://stackoverflow.com/a/24838407/1194883
 (defun next-interesting-buffer ()
   (interactive)
