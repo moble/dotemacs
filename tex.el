@@ -3,23 +3,6 @@
     (setenv "PATH" (concat "/usr/texbin:" (getenv "PATH"))))
 (setq exec-path (append '("/usr/texbin") exec-path) )
 
-;; ;; From ac-math
-;; (require 'ac-math)
-;; (add-to-list 'ac-modes 'latex-mode)   ; make auto-complete aware of `latex-mode`
-;; (defun ac-latex-mode-setup ()         ; add ac-sources to default ac-sources
-;;   (setq ac-sources
-;;         (append '(ac-source-math-unicode ac-source-math-latex ac-source-latex-commands)
-;;                 ac-sources))
-;;   )
-;; (add-hook 'latex-mode-hook 'ac-latex-mode-setup)
-;; (ac-flyspell-workaround)
-
-;; ;; ;; Start us off with the manually installed auctex
-;; (load "auctex.el" nil t t)
-
-;; ;; From auto-complete-auctex
-;; (require 'auto-complete-auctex)
-
 ;;;; AUCTeX
 (require 'tex-site)
 (setq TeX-parse-self t) ; Enable parse on load.
@@ -44,15 +27,6 @@
                          '("run" "latexmk %s" TeX-run-command t t :help "Run latexmk") t)
             )
           )
-
-;; Use latex-extra for interesting keys like:
-;;   * C-c C-a : latex/compile-commands-until-done
-;;   * C-c C-n : latex/next-section
-;;   * C-c C-p : latex/previous-section
-;; (eval-after-load 'latex '(latex/setup-keybinds))
-
-;; (require 'auctex-latexmk)
-;; (auctex-latexmk-setup)
 
 ;;;; BIBTeX
 (add-hook
