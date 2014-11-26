@@ -9,37 +9,13 @@
     (and server-buffer-clients (server-done)))
   (add-hook 'kill-buffer-hook 'fp-kill-server-with-buffer-routine))
 
-;; ;;Make sure to find my own lisp packages
-;; (add-to-list 'load-path "/Users/boyle/.emacs.d/lisp")
-;; (load "auctex.el" nil t t) ;; the melpa version doesn't work for me...
-
-;; ;; Make sure the package manager is doing its thing
-(require 'package)
-;; (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
-;; (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                         ;; ("marmalade" . "http://marmalade-repo.org/packages/")
-                         ("melpa" . "http://melpa.milkbox.net/packages/")))
-(package-initialize)
-
-;; To be able to use a manually installed solarized theme
-;(add-to-list 'custom-theme-load-path (expand-file-name "~/.emacs.d/color-themes/emacs-color-theme-solarized"))
-
-
-(load "~/.dotemacs/basic-behavior")
-
 (load "~/.dotemacs/packages")
-
+(load "~/.dotemacs/basic-behavior")
 (load "~/.dotemacs/tex")
-
 (load "~/.dotemacs/custom-functions")
-
 (load "~/.dotemacs/keybindings")
-
 (load "~/.dotemacs/major-modes")
-
 (load "~/.dotemacs/minor-modes")
-
 
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
