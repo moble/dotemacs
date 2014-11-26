@@ -23,7 +23,7 @@
 ;; "Zoom" the text
 (define-key global-map (kbd "M-=") 'text-scale-increase)
 (define-key global-map (kbd "M--") 'text-scale-decrease)
-(define-key global-map (kbd "M-0") 'text-scale-mode)
+(define-key global-map (kbd "M-0") (lambda () (interactive) (text-scale-set 0)))
 
 ;; This behavior makes emacs buffers behave like browser and terminal tabs, and
 ;; skips useless buffers
