@@ -1,9 +1,11 @@
-
-;; redo
+;; Better redo; See keybindings to "M-z" and "M-S-z"
 (require 'redo+)
 
-;; auto-fill
+;; auto-fill when typing long lines in text files
 (add-hook 'text-mode-hook 'auto-fill-mode)
+
+;; aspell, not ispell
+(setq-default ispell-program-name "/usr/local/bin/aspell")
 
 ;; flyspell
 (require 'flyspell)
@@ -11,8 +13,11 @@
 (setq ispell-program-name "/usr/local/bin/aspell")
 (setq ispell-extra-args '("--sug-mode=fast"))
 
-;; aspell, not ispell
-(setq-default ispell-program-name "/usr/local/bin/aspell")
+;; Auto compression mode
+(auto-compression-mode 1)
+
+;; Highlights selections
+(setq transient-mark-mode t)
 
 ;; Define my own mode for encrypted files
 (define-minor-mode sensitive-mode
@@ -36,15 +41,3 @@
     (if auto-save-default
         (auto-save-mode 1))))
 (add-hook 'epa-file-find-file-hook #'sensitive-mode)
-
-
-;; Auto compression mode
-(auto-compression-mode 1)
-
-;; Highlights selections
-(setq transient-mark-mode t)
-
-;; Use ipython --pylab when starting a python interpreter
-;; (require 'ipython)
-;; (setq ipython-command "ipython --pylab")
-;; (setq py-python-command-args '("--pylab"))
