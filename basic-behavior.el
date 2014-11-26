@@ -22,6 +22,7 @@
 
 ;; Set font height to be taller and default to Adobe's Source Code Pro
 (set-face-attribute 'default nil :height 160 :font "Source Code Pro")
+(set-face-attribute 'mode-line nil :height 140)
 
 ;; Set the default frame size to be the full screen height and half the width
 (add-to-list 'default-frame-alist (cons 'width 142))
