@@ -6,7 +6,7 @@
 (setq inhibit-startup-message t)        ;no splash screen
 ;(setq ls-lisp-dirs-first t)             ;display dirs first in dired
 
-;; Don't use dialog boxes for anything (since they seem to crash emacs on OS X...)
+;; Don't use dialog boxes for anything (not least because they seem to crash emacs on OS X...)
 (defadvice yes-or-no-p (around prevent-dialog activate)
   "Prevent yes-or-no-p from activating a dialog"
   (let ((use-dialog-box nil))
@@ -22,17 +22,13 @@
 
 ;; Set font height to be taller and default to Adobe's Source Code Pro
 (set-face-attribute 'default nil :height 160 :font "Source Code Pro")
-;; (if (string-equal (getenv "TERM") 'xterm-color)
-;;     (message "Hello terminal!")
-;;     (set-face-attribute 'default nil :height 180 :font "Source Code Pro")
-;; )
 
 ;; Set the default frame size to be the full screen height and half the width
 (add-to-list 'default-frame-alist (cons 'width 142))
 (add-to-list 'default-frame-alist (cons 'height 42))
 (setq initial-frame-alist '((top . 0) (left . 0)))
 
-;; Set transparency default
+;; ;; Set transparency default
 ;; (set-frame-parameter (selected-frame) 'alpha '(85 50))
 ;; (add-to-list 'default-frame-alist '(alpha 85 50))
 
@@ -90,17 +86,15 @@
 (setq-default indent-tabs-mode nil)
 (standard-display-ascii ?\t "^I")
 
-;; Set default "tab" width to 4 spaces
+;; Set default "tab" width to 4 spaces, but 2 spaces in c modes
 (setq tab-width 4)
-
-;; Make "tab" give 2 spaces in c mode
 (setq c-basic-indent 2)
 
 ;; Don't indent preprocessor directives
 (c-set-offset (quote cpp-macro) 0 nil)
 
 ;; Set the number to the number of columns to use.
-(setq-default fill-column 76)
+(setq-default fill-column 79)
 
 ;; Use mouse wheel
 (mouse-wheel-mode t)
