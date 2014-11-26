@@ -1,6 +1,7 @@
-;; Make sure auctex can find my stuff
+;; Make sure auctex can find my latex executables.  Unfortunately, this seems
+;; to be the correct way to give emacs a PATH.
 (if (string-equal "darwin" (symbol-name system-type))
-    (setenv "PATH" (concat "/usr/texbin:" (getenv "PATH"))))
+  (setenv "PATH" (concat "/usr/texbin:" (getenv "PATH"))))
 (setq exec-path (append '("/usr/texbin") exec-path) )
 
 (require 'tex-site)
@@ -15,7 +16,20 @@
 (add-hook 'LaTeX-mode-hook 'set-frame-size-tex) ;; resize to my dimensions
 (setq TeX-source-correlate-mode t) ;; Use synctex
 
+;; The following is used to set variables that cannot be set globally, but must
+;; be set each time a tex file is opened
+(defvar TeX-command-extra-options)
+(add-hook 'TeX-mode-hook
+  (lambda ()
+    (setq TeX-command-extra-options "-file-line-error -shell-escape")
+    (setq fill-column 70)
+    (set-frame-size-tex)
+  )
+)
+
 ;; Use Skim nicely
+(defvar TeX-view-program-list)
+(setq TeX-view-program-list '())
 (add-to-list 'TeX-view-program-list
   '("displayline-locate"
     (concatenate
@@ -24,17 +38,11 @@
      ;; file from disk if it was already open; `-g` keeps Skim in the
      ;; background (so I can keep editing); and `-b` shows the reading bar,
      ;; highlighting the PDF line corresponding to the point in the tex buffer.
-     "/Applications/Skim.app/Contents/SharedSupport/displayline -r -b -g %n %o %b "
+     "/Applications/Skim.app/Contents/SharedSupport/displayline -r -b %n %o %b "
      "&& osascript -e 'tell application \"Skim\" to set bounds of window 1 to {580, 0, 1450, 877}'")))
+(defvar TeX-view-program-selection)
+(setq TeX-view-program-selection '())
 (add-to-list 'TeX-view-program-selection '(output-pdf "displayline-locate"))
-
-;; The following is used to set variables that cannot be set globally, but must
-;; be set each time a tex file is opened
-(add-hook 'TeX-mode-hook
-  (lambda ()
-    (setq TeX-command-extra-options "-file-line-error -shell-escape")
-  )
-)
 
 ;; Add useful arXiv fields to the Misc entry type (which an arxiv-only paper
 ;; needs to be, since bibtex complains about a missing journal if it's an
@@ -58,7 +66,6 @@
   )
 )
 
-
 ;; Use zotelo to interface with my zotero library
 (add-hook 'TeX-mode-hook 'zotelo-minor-mode)
 ;; I figured out exactly what these lines should be by customizing through the
@@ -67,13 +74,12 @@
 (setq zotelo-default-translator (quote Better-BibTeX))
 
 ;; Don't italicize \em and surrounds
+(defvar font-latex-match-italic-declaration-keywords)
 (eval-after-load "font-latex"
   '(setq-default
     font-latex-match-italic-declaration-keywords
     (remove "em" font-latex-match-italic-declaration-keywords))
   )
-
-
 
 ;; Allow certain variables to be set per-buffer within a file using either the
 ;; `Local Variables:` list (usually at the bottom of the file), or the `-*-`
