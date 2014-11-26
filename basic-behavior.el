@@ -114,3 +114,19 @@
 ;; Allow use of C-xC-l and C-xC-u for changing case
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
+
+;; Allow certain variables to be set per-buffer within a file using either the
+;; `Local Variables:` list (usually at the bottom of the file), or the `-*-`
+;; string (usually near the top of the file).
+(put 'LocalWords 'safe-local-variable #'stringp) ;; add words to spell-check dictionary for this file
+(put 'zotero-collection 'safe-local-variable #'stringp) ;; configure the zotero collection for bibtex
+;; See also tex.el
+
+;; Highlight matching paren when on a paren
+(setq show-paren-mode t)
+;; Highlight matching paren when it is visible, otherwise highlight the whole
+;; expression
+(setq show-paren-style 'mixed)
+
+;; Highlight whitespace at the end of a line
+(setq show-trailing-whitespace t)
