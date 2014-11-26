@@ -86,6 +86,9 @@
 (setq-default indent-tabs-mode nil)
 (standard-display-ascii ?\t "^I")
 
+;; Highlight whitespace at the end of a line
+(setq show-trailing-whitespace t)
+
 ;; Set default "tab" width to 4 spaces, but 2 spaces in c modes
 (setq tab-width 4)
 (setq c-basic-indent 2)
@@ -123,10 +126,7 @@
 ;; See also tex.el
 
 ;; Highlight matching paren when on a paren
-(setq show-paren-mode t)
+(show-paren-mode 1)
 ;; Highlight matching paren when it is visible, otherwise highlight the whole
 ;; expression
 (setq show-paren-style 'mixed)
-
-;; Highlight whitespace at the end of a line
-(setq show-trailing-whitespace t)
