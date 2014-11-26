@@ -2,9 +2,9 @@
 (setq ns-pop-up-frames 'nil)
 
 ;; Override defaults
-(fset 'yes-or-no-p 'y-or-n-p)           ;replace y-e-s by y
-(setq inhibit-startup-message t)        ;no splash screen
-;(setq ls-lisp-dirs-first t)             ;display dirs first in dired
+(fset 'yes-or-no-p 'y-or-n-p)           ; replace y-e-s by y
+(setq inhibit-startup-message t)        ; no splash screen
+(setq confirm-kill-emacs 'y-or-n-p)     ; require confirmation before quitting
 
 ;; Don't use dialog boxes for anything (not least because they seem to crash emacs on OS X...)
 (defadvice yes-or-no-p (around prevent-dialog activate)
@@ -110,3 +110,7 @@
 
 ;; Just follow git-controlled links without asking
 (setq vc-follow-symlinks t)
+
+;; Allow use of C-xC-l and C-xC-u for changing case
+(put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
