@@ -19,4 +19,5 @@
 (defalias 'yas/expand-snippet 'yas-expand-snippet)
 
 ;; This makes sure we're using company in all modes
+(require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
