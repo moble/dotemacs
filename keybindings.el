@@ -16,7 +16,7 @@
 ;; Cut/copy/paste
 (global-set-key (kbd "M-c") 'kill-ring-save)
 (global-set-key (kbd "M-v") 'yank)
-;;(global-set-key (kbd "M-x") 'kill-region)
+;;(global-set-key (kbd "M-x") 'kill-region) ;; Maybe don't go overboard
 ;; Undo/redo properly
 (global-set-key (kbd "M-z") 'undo)
 (global-set-key (kbd "M-S-z") 'redo)
@@ -35,3 +35,4 @@
 (global-set-key (kbd "M-t") 'toggle-frame-size)
 (global-set-key (kbd "M-n") 'night)
 (global-set-key (kbd "M-d") 'day)
+(global-set-key (kbd "M-\\") 'goto-match-paren)
