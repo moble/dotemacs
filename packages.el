@@ -5,6 +5,10 @@
   (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
 )
 
+;; Use my anaconda installation for python
+(defvar python-shell-interpreter)
+(setq python-shell-interpreter
+      (expand-file-name "~/.continuum/anaconda/bin/python"))
 
 ;; Anaconda-mode is apparently integrated with anaconda itself
 (add-hook 'python-mode-hook 'anaconda-mode)
