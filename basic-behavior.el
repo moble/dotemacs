@@ -6,6 +6,11 @@
 (setq inhibit-startup-message t)        ; no splash screen
 (setq confirm-kill-emacs 'y-or-n-p)     ; require confirmation before quitting
 
+;; Save history across sessions
+(savehist-mode 1)
+(defvar savehist-additional-variables)
+(setq savehist-additional-variables '(kill-ring search-ring regexp-search-ring))
+
 ;; Don't use dialog boxes for anything (not least because they seem to crash emacs on OS X...)
 (defadvice yes-or-no-p (around prevent-dialog activate)
   "Prevent yes-or-no-p from activating a dialog"
