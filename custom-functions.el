@@ -1,3 +1,19 @@
+;; This command can be used to run another command on all files in a directory.
+;; Open the directory as usual (which will be in `dired`), and mark all the
+;; desired files by pressing `m`.  Then, press `M-x dired-do-command ENTER
+;; <command-name> ENTER`.  Save and close all affected buffers, as desired.
+;; Credit: <http://superuser.com/a/176629/213106>
+(defun dired-do-command (command)
+  "Run COMMAND on marked files. Any files not already open will be opened.
+After this command has been run, any buffers it's modified will remain
+open and unsaved; others will just remain open.  Files are selected in dired with `m`"
+  (interactive "CRun on marked files M-x ")
+  (save-window-excursion
+    (mapc (lambda (filename)
+            (find-file filename)
+            (call-interactively command))
+          (dired-get-marked-files))))
+
 (defun kill-other-buffer-and-window () (interactive)
   (other-window 1)
   (kill-buffer-and-window))
