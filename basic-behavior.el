@@ -89,6 +89,7 @@
 ;; Use spaces for all indents instead of tabs and show a tab character
 ;; as "^I".  [Note that `whitespace-cleanup` can do any necessary
 ;; conversions automatically.]
+;; Note that I've added a custom-function named `tolerate-tabs` to turn this off
 (setq-default indent-tabs-mode nil)
 (standard-display-ascii ?\t "^I")
 

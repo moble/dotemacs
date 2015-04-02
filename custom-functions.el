@@ -131,3 +131,9 @@ open and unsaved; others will just remain open.  Files are selected in dired wit
                          (backward-list 1)
                          (backward-char 1)))
                   ))))))
+
+(defun tolerate-tabs ()
+  "Switch to displaying tabs as tabs"
+  (interactive)
+  (standard-display-ascii ?\t "\t")
+  )
