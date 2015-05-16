@@ -4,17 +4,23 @@
   (setenv "PATH" (concat "/usr/texbin:" (getenv "PATH"))))
 (setq exec-path (append '("/usr/texbin") exec-path) )
 
-(require 'tex-site)
+(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
 (setq reftex-plug-into-AUCTeX t)
 
-(setq TeX-parse-self t) ;; Enable parse on load
+;; ;; Standard things I generally don't need or like
+;; (setq-default TeX-master nil) ;; Don't automatically set the master file name
+;; (add-hook 'LaTeX-mode-hook 'visual-line-mode) ;;
+;; (add-hook 'LaTeX-mode-hook 'flyspell-mode) ;; Turn on flyspell for every tex file
+;; (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode) ;; "Easier" entry of math symbols
+
+(setq TeX-parse-self t) ;; Enable parsing of the file itself on load
 (setq TeX-auto-save t) ;; Enable save on command executation (e.g., LaTeX)
 (setq TeX-save-query nil) ;; Don't even ask about it
+
 (setq TeX-electric-sub-and-superscript t) ;; auto-insert braces
 (setq TeX-display-help nil) ;; Just show a terse minibuffer comment when inspecting errors
-(add-hook 'LaTeX-mode-hook 'turn-on-reftex) ;; with AUCTeX LaTeX mode
 (add-hook 'LaTeX-mode-hook 'set-frame-size-tex) ;; resize to my dimensions
-(setq TeX-source-correlate-mode t) ;; Use synctex
+(setq reftex-label-alist '((nil ?e nil "~\\eqref{%s}" nil nil))) ;; Look for options for eqref
 
 ;; The following is used to set variables that cannot be set globally, but must
 ;; be set each time a tex file is opened
@@ -24,10 +30,12 @@
     (setq TeX-command-extra-options "-file-line-error -shell-escape")
     (setq fill-column 70)
     (set-frame-size-tex)
+    (TeX-add-symbols '("eqref" TeX-arg-ref (ignore)))
   )
 )
 
 ;; Use Skim nicely
+(setq TeX-source-correlate-mode t) ;; Use synctex
 (defvar TeX-view-program-list)
 (setq TeX-view-program-list '())
 (add-to-list 'TeX-view-program-list
@@ -66,12 +74,12 @@
   )
 )
 
-;; Use zotelo to interface with my zotero library
-(add-hook 'TeX-mode-hook 'zotelo-minor-mode)
-;; I figured out exactly what these lines should be by customizing through the
-;; menu system, and just looking in custom-set-variables after saving
-(add-to-list 'zotelo-translators (quote (Better-BibTeX "ca65189f-8815-4afe-8c8b-8c7c15f0edca" "bib")))
-(setq zotelo-default-translator (quote Better-BibTeX))
+;; ;; Use zotelo to interface with my zotero library
+;; (add-hook 'TeX-mode-hook 'zotelo-minor-mode)
+;; ;; I figured out exactly what these lines should be by customizing through the
+;; ;; menu system, and just looking in custom-set-variables after saving
+;; (add-to-list 'zotelo-translators (quote (Better-BibTeX "ca65189f-8815-4afe-8c8b-8c7c15f0edca" "bib")))
+;; (setq zotelo-default-translator (quote Better-BibTeX))
 
 ;; Don't italicize \em and surrounds
 (defvar font-latex-match-italic-declaration-keywords)

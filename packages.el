@@ -10,11 +10,11 @@
 (setq python-shell-interpreter
       (expand-file-name "~/.continuum/anaconda/bin/python"))
 
-;; Anaconda-mode is apparently integrated with anaconda itself
-(add-hook 'python-mode-hook 'anaconda-mode)
+;; ;; Anaconda-mode is apparently integrated with anaconda itself
+;; (add-hook 'python-mode-hook 'anaconda-mode)
 
-;; This makes sure we're using company in all modes
-(require 'company)
-(add-hook 'after-init-hook 'global-company-mode)
+;; ;; This makes sure we're using company in all modes
+;; (require 'company)
+;; (add-hook 'after-init-hook 'global-company-mode)
 
 ;; Zotelo is dealt with in tex.el
