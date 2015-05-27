@@ -31,7 +31,8 @@
  ;; If there is more than one, they won't work right.
  '(safe-local-variable-values
    (quote
-    ((TeX-master . "paper")
+    ((TeX-master . "../Presentation")
+     (TeX-master . "paper")
      (asy-TeX-master-file . "../Presentation")
      (asy-TeX-master-file . "Presentation")
      (TeX-master . true)))))

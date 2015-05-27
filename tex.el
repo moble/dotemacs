@@ -27,7 +27,7 @@
 (defvar TeX-command-extra-options)
 (add-hook 'TeX-mode-hook
   (lambda ()
-    (setq TeX-command-extra-options "-file-line-error -shell-escape")
+    (setq TeX-command-extra-options "-shell-escape")
     (setq fill-column 70)
     (set-frame-size-tex)
     (TeX-add-symbols '("eqref" TeX-arg-ref (ignore)))
@@ -75,11 +75,25 @@
 )
 
 ;; ;; Use zotelo to interface with my zotero library
+;; ;;
+;; ;; This requires the MozRepl plugin.  To install the plugin with Zotero
+;; ;; Standalone, google MozRepl and download (possibly by right-clicking and
+;; ;; choosing "Save as...").  You should get an .xpi file.  Open Zotero, click on
+;; ;; the "Tools" menu, then "Add-ons".  At the top-right of the window that pops
+;; ;; up, there's a little gear icon, under which you'll find "Install Add-on From
+;; ;; File...".  Click that, select your .xpi file, and follow the instructions.
+;; ;; Now, next time you open the "Tools" menu, there should be a MozRepl entry.
+;; ;; I like to enable the "Activate on startup" option.
+;; ;;
 ;; (add-hook 'TeX-mode-hook 'zotelo-minor-mode)
 ;; ;; I figured out exactly what these lines should be by customizing through the
 ;; ;; menu system, and just looking in custom-set-variables after saving
-;; (add-to-list 'zotelo-translators (quote (Better-BibTeX "ca65189f-8815-4afe-8c8b-8c7c15f0edca" "bib")))
-;; (setq zotelo-default-translator (quote Better-BibTeX))
+;; (eval-after-load "zotelo-minor-mode"
+;;   '(progn
+;;     (add-to-list 'zotelo-translators (quote (Better-BibTeX "ca65189f-8815-4afe-8c8b-8c7c15f0edca" "bib")))
+;;     (setq zotelo-default-translator (quote Better-BibTeX))
+;;     )
+;;   )
 
 ;; Don't italicize \em and surrounds
 (defvar font-latex-match-italic-declaration-keywords)
