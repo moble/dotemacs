@@ -22,16 +22,24 @@ open and unsaved; others will just remain open.  Files are selected in dired wit
 (defun set-frame-position-one () (interactive)
   (set-frame-position (selected-frame) 0 0)
   )
+
+;; Previously: 70x50 and faces 130, 110
 (defun set-frame-size-tex () (interactive)
-  (set-frame-size (selected-frame) 70 50)
-  (set-face-attribute 'default nil :height 130)
-  (set-face-attribute 'mode-line nil :height 110)
+  (set-face-attribute 'default nil :height 150)
+  (set-face-attribute 'mode-line nil :height 130)
+  (set-frame-size (selected-frame) 70 52)
+  (set-frame-position-one)
 )
+
+;; Previously: 142x42 and faces 160, 140
+;; See also 
 (defun set-frame-size-full () (interactive)
-  (set-frame-size (selected-frame) 142 42)
-  (set-face-attribute 'default nil :height 160)
-  (set-face-attribute 'mode-line nil :height 140)
+  (set-face-attribute 'default nil :height 180)
+  (set-face-attribute 'mode-line nil :height 160)
+  (set-frame-size (selected-frame) 151 43)
+  (set-frame-position-one)
 )
+
 (defun toggle-frame-size () (interactive)
   (if
     (< (frame-width (selected-frame)) 71)

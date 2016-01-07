@@ -5,6 +5,7 @@
 (fset 'yes-or-no-p 'y-or-n-p)           ; replace y-e-s by y
 (setq inhibit-startup-message t)        ; no splash screen
 (setq confirm-kill-emacs 'y-or-n-p)     ; require confirmation before quitting
+(setq initial-scratch-message "")       ; blank scratch message at startup
 
 ;; Save history across sessions
 (savehist-mode 1)
@@ -26,12 +27,12 @@
 (setq use-dialog-box nil)
 
 ;; Set font height to be taller and default to Adobe's Source Code Pro
-(set-face-attribute 'default nil :height 160 :font "Source Code Pro")
-(set-face-attribute 'mode-line nil :height 140)
+(set-face-attribute 'default nil :height 180 :font "Source Code Pro")
+(set-face-attribute 'mode-line nil :height 160)
 
 ;; Set the default frame size to be the full screen height and half the width
-(add-to-list 'default-frame-alist (cons 'width 142))
-(add-to-list 'default-frame-alist (cons 'height 42))
+(add-to-list 'default-frame-alist (cons 'width 151))
+(add-to-list 'default-frame-alist (cons 'height 43))
 (setq initial-frame-alist '((top . 0) (left . 0)))
 
 ;; ;; Set transparency default

@@ -47,7 +47,7 @@
      ;; background (so I can keep editing); and `-b` shows the reading bar,
      ;; highlighting the PDF line corresponding to the point in the tex buffer.
      "/Applications/Skim.app/Contents/SharedSupport/displayline -r -b %n %o %b "
-     "&& osascript -e 'tell application \"Skim\" to set bounds of window 1 to {580, 0, 1450, 877}'")))
+     "&& osascript -e 'tell application \"Skim\" to set bounds of window 1 to {650, 0, 1680, 1050}'")))
 (defvar TeX-view-program-selection)
 (setq TeX-view-program-selection '())
 (add-to-list 'TeX-view-program-selection '(output-pdf "displayline-locate"))
@@ -74,26 +74,26 @@
   )
 )
 
-;; ;; Use zotelo to interface with my zotero library
-;; ;;
-;; ;; This requires the MozRepl plugin.  To install the plugin with Zotero
-;; ;; Standalone, google MozRepl and download (possibly by right-clicking and
-;; ;; choosing "Save as...").  You should get an .xpi file.  Open Zotero, click on
-;; ;; the "Tools" menu, then "Add-ons".  At the top-right of the window that pops
-;; ;; up, there's a little gear icon, under which you'll find "Install Add-on From
-;; ;; File...".  Click that, select your .xpi file, and follow the instructions.
-;; ;; Now, next time you open the "Tools" menu, there should be a MozRepl entry.
-;; ;; I like to enable the "Activate on startup" option.
-;; ;;
-;; (add-hook 'TeX-mode-hook 'zotelo-minor-mode)
-;; ;; I figured out exactly what these lines should be by customizing through the
-;; ;; menu system, and just looking in custom-set-variables after saving
-;; (eval-after-load "zotelo-minor-mode"
-;;   '(progn
-;;     (add-to-list 'zotelo-translators (quote (Better-BibTeX "ca65189f-8815-4afe-8c8b-8c7c15f0edca" "bib")))
-;;     (setq zotelo-default-translator (quote Better-BibTeX))
-;;     )
-;;   )
+;; Use zotelo to interface with my zotero library
+;;
+;; This requires the MozRepl plugin.  To install the plugin with Zotero
+;; Standalone, google MozRepl and download (possibly by right-clicking and
+;; choosing "Save as...").  You should get an .xpi file.  Open Zotero, click on
+;; the "Tools" menu, then "Add-ons".  At the top-right of the window that pops
+;; up, there's a little gear icon, under which you'll find "Install Add-on From
+;; File...".  Click that, select your .xpi file, and follow the instructions.
+;; Now, next time you open the "Tools" menu, there should be a MozRepl entry.
+;; I like to enable the "Activate on startup" option.
+;;
+(add-hook 'TeX-mode-hook 'zotelo-minor-mode)
+;; I figured out exactly what these lines should be by customizing through the
+;; menu system, and just looking in custom-set-variables after saving
+(eval-after-load "zotelo-minor-mode"
+  '(progn
+    (add-to-list 'zotelo-translators (quote (Better-BibTeX "ca65189f-8815-4afe-8c8b-8c7c15f0edca" "bib")))
+    (setq zotelo-default-translator (quote Better-BibTeX))
+    )
+  )
 
 ;; Don't italicize \em and surrounds
 (defvar font-latex-match-italic-declaration-keywords)
