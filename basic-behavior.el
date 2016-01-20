@@ -105,7 +105,7 @@
 (c-set-offset (quote cpp-macro) 0 nil)
 
 ;; Set the number to the number of columns to use.
-(setq-default fill-column 79)
+(setq-default fill-column 70)
 
 ;; Use mouse wheel
 (mouse-wheel-mode t)
