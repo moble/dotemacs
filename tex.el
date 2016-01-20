@@ -1,8 +1,8 @@
 ;; Make sure auctex can find my latex executables.  Unfortunately, this seems
 ;; to be the correct way to give emacs a PATH.
 (if (string-equal "darwin" (symbol-name system-type))
-  (setenv "PATH" (concat "/usr/texbin:" (getenv "PATH"))))
-(setq exec-path (append '("/usr/texbin") exec-path) )
+  (setenv "PATH" (concat "/Library/TeX/texbin:" (getenv "PATH"))))
+(setq exec-path (append '("/Library/TeX/texbin") exec-path) )
 
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
 (setq reftex-plug-into-AUCTeX t)
