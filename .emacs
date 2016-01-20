@@ -1,3 +1,6 @@
+;; Added by Package.el.  Just leave it commented out; I'll do it again in packages.el.
+;;(package-initialize)
+
 ;; Start the server, if it's not already
 (require 'server)
 (or (server-running-p)

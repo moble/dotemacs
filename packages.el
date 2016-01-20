@@ -1,4 +1,4 @@
-;; Make sure the package manager is doing its thing
+;; This must come before configurations of installed packages
 (when (>= emacs-major-version 24)
   (require 'package)
   (package-initialize)
