@@ -49,7 +49,7 @@
 (tool-bar-mode -1)
 
 ;; Better frame titles
-(setq frame-title-format (concat  "%b - emacs@" system-name))
+(setq frame-title-format (concat  "%b - emacs@" (system-name)))
 
 ;; When dragging with the mouse, automatically copy to the clipboard
 (setq mouse-drag-copy-region t)
@@ -92,7 +92,7 @@
 ;; conversions automatically.]
 ;; Note that I've added a custom-function named `tolerate-tabs` to turn this off
 (setq-default indent-tabs-mode nil)
-(standard-display-ascii ?\t "^I")
+;; (standard-display-ascii ?\t "^I")
 
 ;; Highlight whitespace at the end of a line
 (setq show-trailing-whitespace t)
@@ -138,3 +138,21 @@
 ;; Highlight matching paren when it is visible, otherwise highlight the whole
 ;; expression
 (setq show-paren-style 'mixed)
+
+;; Add /usr/local/bin to the path.  Unfortunately, this seems to be
+;; the correct way to give emacs a PATH.  Apparently, PATH is used
+;; when you start a shell, whereas exec-path is used by emacs itself
+;; when looking for programs.  For example, tramp uses the first
+;; version of ssh found in exec-path.
+(if (string-equal "darwin" (symbol-name system-type))
+    (setenv "PATH" (concat
+                    (expand-file-name "~/.bin") ":"
+                    (expand-file-name "~/.continuum/anaconda/bin") ":"
+                    "/usr/local/bin:"
+                    (getenv "PATH"))))
+(setq exec-path
+      (append
+       '((expand-file-name "~/.bin")
+         (expand-file-name "~/.continuum/anaconda/bin")
+         "/usr/local/bin")
+       exec-path))

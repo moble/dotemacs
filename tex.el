@@ -4,6 +4,8 @@
   (setenv "PATH" (concat "/Library/TeX/texbin:" (getenv "PATH"))))
 (setq exec-path (append '("/Library/TeX/texbin") exec-path) )
 
+(add-hook 'LaTeX-mode-hook #'latex-extra-mode)
+(setq latex/view-after-compile nil)
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
 (setq reftex-plug-into-AUCTeX t)
 
@@ -46,8 +48,8 @@
      ;; file from disk if it was already open; `-g` keeps Skim in the
      ;; background (so I can keep editing); and `-b` shows the reading bar,
      ;; highlighting the PDF line corresponding to the point in the tex buffer.
-     "/Applications/Skim.app/Contents/SharedSupport/displayline -r -b %n %o %b "
-     "&& osascript -e 'tell application \"Skim\" to set bounds of window 1 to {650, 0, 1680, 1050}'")))
+     "/Applications/Skim.app/Contents/SharedSupport/displayline -r %n %o %b ;"
+     "osascript -e 'tell application \"Skim\" to set bounds of window 1 to {650, 0, 1680, 1050}'")))
 (defvar TeX-view-program-selection)
 (setq TeX-view-program-selection '())
 (add-to-list 'TeX-view-program-selection '(output-pdf "displayline-locate"))
