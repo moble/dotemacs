@@ -127,7 +127,7 @@
 (put 'upcase-region 'disabled nil)
 
 ;; Allow certain variables to be set per-buffer within a file using either the
-;; `Local Variables:` list (usually at the bottom of the file), or the `-*-`
+;; `Local Variables` list (usually at the bottom of the file), or the `-*-`
 ;; string (usually near the top of the file).
 (put 'LocalWords 'safe-local-variable #'stringp) ;; add words to spell-check dictionary for this file
 (put 'zotero-collection 'safe-local-variable #'stringp) ;; configure the zotero collection for bibtex
@@ -152,7 +152,7 @@
                     (getenv "PATH"))))
 (setq exec-path
       (append
-       '((expand-file-name "~/.bin")
-         (expand-file-name "~/.continuum/anaconda/bin")
+       `(,(expand-file-name "~/.bin")
+         ,(expand-file-name "~/.continuum/anaconda/bin")
          "/usr/local/bin")
        exec-path))
