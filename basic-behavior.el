@@ -44,9 +44,17 @@
 (column-number-mode 1)
 
 ;; Hide menu, tool bar, and scroll bar
-;;(menu-bar-mode -1)
-(scroll-bar-mode -1)
-(tool-bar-mode -1)
+(if (display-graphic-p)
+    (progn
+      ;; Use mouse wheel
+      (mouse-wheel-mode t)
+
+      ;; Skip some ugly things I don't need
+      ;;(menu-bar-mode -1)
+      (tool-bar-mode -1)
+      (scroll-bar-mode -1)
+      )
+  )
 
 ;; Better frame titles
 (setq frame-title-format (concat  "%b - emacs@" (system-name)))
@@ -106,9 +114,6 @@
 
 ;; Set the number to the number of columns to use.
 (setq-default fill-column 70)
-
-;; Use mouse wheel
-(mouse-wheel-mode t)
 
 ;; Make the bell visible, rather than audible
 (setq visible-bell t)
