@@ -34,7 +34,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (latex-extra zotelo redo+ python-docstring markdown-mode auctex)))
+    (org-bullets latex-extra zotelo redo+ python-docstring markdown-mode auctex)))
  '(safe-local-variable-values
    (quote
     ((TeX-master . "../Presentation")
