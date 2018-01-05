@@ -2,6 +2,7 @@
 (global-unset-key (kbd "C-z"))
 (global-unset-key (kbd "C-x C-z"))
 (put 'suspend-frame 'disabled t)
+(global-set-key (kbd "M-h") 'ns-do-hide-emacs)
 
 (global-set-key (kbd "M-e") 'execute-extended-command)
 (global-set-key (kbd "M-l") 'goto-line)
