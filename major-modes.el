@@ -1,3 +1,7 @@
+;; Web-mode is the best thing to use for html files
+(setq auto-mode-alist
+      (append '(("\\.html$" . web-mode)) auto-mode-alist))
+
 ;; Ipython `.ipy` files should be treated as python
 (setq auto-mode-alist
       (append '(("\\.ipy$" . python-mode)) auto-mode-alist))

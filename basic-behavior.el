@@ -2,10 +2,11 @@
 (setq ns-pop-up-frames 'nil)
 
 ;; Override defaults
-(fset 'yes-or-no-p 'y-or-n-p)           ; replace y-e-s by y
-(setq inhibit-startup-message t)        ; no splash screen
-(setq confirm-kill-emacs 'y-or-n-p)     ; require confirmation before quitting
-(setq initial-scratch-message "")       ; blank scratch message at startup
+(fset 'yes-or-no-p 'y-or-n-p)              ; replace y-e-s by y
+(setq inhibit-startup-message t)           ; no splash screen
+(setq confirm-kill-emacs 'y-or-n-p)        ; require confirmation before quitting
+(setq initial-scratch-message "")          ; blank scratch message at startup
+(setq completions-format 'vertical)        ; sort completions vertically
 
 ;; Save history across sessions
 (savehist-mode 1)
@@ -113,7 +114,7 @@
 (c-set-offset (quote cpp-macro) 0 nil)
 
 ;; Set the number to the number of columns to use.
-(setq-default fill-column 70)
+(setq-default fill-column 100)
 
 ;; Make the bell visible, rather than audible
 (setq visible-bell t)
