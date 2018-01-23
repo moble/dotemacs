@@ -8,7 +8,7 @@
 ;; Use my anaconda installation for python
 (defvar python-shell-interpreter)
 (setq python-shell-interpreter
-      (expand-file-name "~/.continuum/anaconda/bin/python"))
+      (expand-file-name "~/.continuum/anaconda3/bin/python"))
 
 ;; ;; Anaconda-mode is apparently integrated with anaconda itself
 ;; (add-hook 'python-mode-hook 'anaconda-mode)
