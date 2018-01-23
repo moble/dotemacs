@@ -3,7 +3,7 @@
 
 ;; Start the server, if it's not already
 (require 'server)
-(or (server-running-p)
+(unless (server-running-p)
     (server-start))
 (defvar server-buffer-clients)
 (when (and (fboundp 'server-start) (string-equal (getenv "TERM") 'xterm))
