@@ -5,16 +5,31 @@
   (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
 )
 
-;; Use my anaconda installation for python
-(defvar python-shell-interpreter)
-(setq python-shell-interpreter
-      (expand-file-name "~/.continuum/anaconda3/bin/python"))
+;; ;; Use my anaconda installation for python
+;; (defvar python-shell-interpreter)
+;; (setq python-shell-interpreter
+;;       (expand-file-name "~/.continuum/current/envs/science/bin/python"))
 
-;; ;; Anaconda-mode is apparently integrated with anaconda itself
-;; (add-hook 'python-mode-hook 'anaconda-mode)
+;; Tell everyone about my conda installation
+(require 'conda)
+(conda-env-initialize-interactive-shells)
+(conda-env-initialize-eshell)
+(conda-env-autoactivate-mode t)
+(setq conda-anaconda-home (file-truename "/Users/boyle/.continuum/current"))
+(setq conda-env-home-directory (file-truename "/Users/boyle/.continuum/current"))
+(conda-env-activate "science")
 
-;; ;; This makes sure we're using company in all modes
-;; (require 'company)
-;; (add-hook 'after-init-hook 'global-company-mode)
+;; Anaconda-mode is apparently integrated with anaconda itself
+(add-hook 'python-mode-hook 'anaconda-mode)
+
+;; Document function parameters in echo area
+(add-hook 'python-mode-hook 'anaconda-eldoc-mode)
+
+;; This makes sure we're using company in all modes
+(require 'company)
+(add-hook 'after-init-hook 'global-company-mode)
 
 ;; Zotelo is dealt with in tex.el
+
+;; (add-to-list 'load-path "path-to-julia-mode")
+;; (require 'julia-mode)

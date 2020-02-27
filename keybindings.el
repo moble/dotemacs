@@ -37,3 +37,7 @@
 (global-set-key (kbd "M-n") 'night)
 (global-set-key (kbd "M-d") 'day)
 (global-set-key (kbd "M-\\") 'goto-match-paren)
+
+;; Page-up/Page-down
+(global-set-key (kbd "M-<down>") 'scroll-up-command)
+(global-set-key (kbd "M-<up>") 'scroll-down-command)

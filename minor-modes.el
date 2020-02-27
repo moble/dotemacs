@@ -13,6 +13,12 @@
 (setq ispell-program-name "/usr/local/bin/aspell")
 (setq ispell-extra-args '("--sug-mode=fast"))
 
+;; company-mode completion
+(add-hook 'after-init-hook 'global-company-mode)
+
+;; global activation of the unicode symbol completion for company-mode
+(add-to-list 'company-backends 'company-math-symbols-unicode)
+
 ;; Auto compression mode
 (auto-compression-mode 1)
 

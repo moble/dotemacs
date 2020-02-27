@@ -7,6 +7,7 @@
 (setq confirm-kill-emacs 'y-or-n-p)        ; require confirmation before quitting
 (setq initial-scratch-message "")          ; blank scratch message at startup
 (setq completions-format 'vertical)        ; sort completions vertically
+(setq echo-keystrokes 0.1)                 ; don't wait so long to show commands in minibuffer
 
 ;; Save history across sessions
 (savehist-mode 1)
@@ -153,12 +154,10 @@
 (if (string-equal "darwin" (symbol-name system-type))
     (setenv "PATH" (concat
                     (expand-file-name "~/.bin") ":"
-                    (expand-file-name "~/.continuum/anaconda/bin") ":"
                     "/usr/local/bin:"
                     (getenv "PATH"))))
 (setq exec-path
       (append
        `(,(expand-file-name "~/.bin")
-         ,(expand-file-name "~/.continuum/anaconda/bin")
          "/usr/local/bin")
        exec-path))

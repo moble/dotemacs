@@ -145,3 +145,24 @@ open and unsaved; others will just remain open.  Files are selected in dired wit
   (interactive)
   (standard-display-ascii ?\t "\t")
   )
+
+
+;; ;; The following doesn't work
+;; (defun search-in-math ()
+;;   "Call `query-replace-regexp' with `isearch-filter-predicate' set to filter out matches outside LaTeX math environments."
+;;   (interactive)
+;;   (let ((isearch-filter-predicate
+;;          (lambda (BEG END)
+;;            (save-excursion (save-match-data (goto-char BEG) (texmathp)))))
+;;         (case-fold-search nil))
+;;     (call-interactively 'isearch-forward)))
+
+
+(defun replace-in-math ()
+  "Call `query-replace-regexp' with `isearch-filter-predicate' set to filter out matches outside LaTeX math environments."
+  (interactive)
+  (let ((isearch-filter-predicate
+         (lambda (BEG END)
+           (save-excursion (save-match-data (goto-char BEG) (texmathp)))))
+        (case-fold-search nil))
+    (call-interactively 'query-replace-regexp)))
