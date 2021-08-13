@@ -10,6 +10,9 @@
 
 ;; Make some keys more Mac-like
 (global-set-key (kbd "M-`") 'other-frame)
+(global-set-key (kbd "M-T") 'make-frame)
+(global-set-key (kbd "M-{") (lambda () (interactive) (other-frame 1)))
+(global-set-key (kbd "M-}") (lambda () (interactive) (other-frame -1)))
 (global-set-key (kbd "M-a") 'mark-whole-buffer)
 (global-set-key (kbd "M-f") 'isearch-forward-regexp)
 (global-set-key (kbd "M-s") 'save-buffer)
@@ -33,7 +36,7 @@
 
 ;; These correspond to some of my custom functions
 (global-set-key (kbd "M-1") 'set-frame-position-one)
-(global-set-key (kbd "M-t") 'toggle-frame-size)
+(global-set-key (kbd "M-T") 'toggle-frame-size)
 (global-set-key (kbd "M-n") 'night)
 (global-set-key (kbd "M-d") 'day)
 (global-set-key (kbd "M-\\") 'goto-match-paren)

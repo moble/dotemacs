@@ -9,6 +9,7 @@
 (setq completions-format 'vertical)        ; sort completions vertically
 (setq echo-keystrokes 0.1)                 ; don't wait so long to show commands in minibuffer
 
+
 ;; Save history across sessions
 (savehist-mode 1)
 (defvar savehist-additional-variables)
@@ -29,7 +30,10 @@
 (setq use-dialog-box nil)
 
 ;; Set font height to be taller and default to Adobe's Source Code Pro
-(set-face-attribute 'default nil :height 180 :font "Source Code Pro")
+;;(set-face-attribute 'default nil :height 180 :font "Source Code Pro")
+;;(set-face-attribute 'default nil :height 180 :font "Iosevka SS02")
+;; (set-face-attribute 'default nil :height 180 :font "Fira Code")
+(set-face-attribute 'default nil :height 190 :font "JuliaMono")
 (set-face-attribute 'mode-line nil :height 160)
 
 ;; Set the default frame size to be the full screen height and half the width
@@ -50,6 +54,10 @@
     (progn
       ;; Use mouse wheel
       (mouse-wheel-mode t)
+
+      ;; Slow it down a bit
+      (setq mouse-wheel-scroll-amount '(0.03))
+      (setq mouse-wheel-progressive-speed nil)
 
       ;; Skip some ugly things I don't need
       ;;(menu-bar-mode -1)
@@ -145,6 +153,8 @@
 ;; Highlight matching paren when it is visible, otherwise highlight the whole
 ;; expression
 (setq show-paren-style 'mixed)
+;; Color matching delimiters
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
 ;; Add /usr/local/bin to the path.  Unfortunately, this seems to be
 ;; the correct way to give emacs a PATH.  Apparently, PATH is used

@@ -24,19 +24,22 @@ open and unsaved; others will just remain open.  Files are selected in dired wit
   )
 
 ;; Previously: 70x50 and faces 130, 110
+;; Previously: 70x52 and faces 150, 130
 (defun set-frame-size-tex () (interactive)
   (set-face-attribute 'default nil :height 150)
   (set-face-attribute 'mode-line nil :height 130)
-  (set-frame-size (selected-frame) 70 52)
+  (set-frame-size (selected-frame) 70 58)
   (set-frame-position-one)
 )
 
 ;; Previously: 142x42 and faces 160, 140
-;; See also 
+;; Previously: 151x43 and faces 180, 160
+;; Previously: 151x43 and faces 180, 160 for Source Code Pro
+;; Previously: 151x43 and faces 180, 160 for Fira Code
 (defun set-frame-size-full () (interactive)
-  (set-face-attribute 'default nil :height 180)
+  (set-face-attribute 'default nil :height 190)
   (set-face-attribute 'mode-line nil :height 160)
-  (set-frame-size (selected-frame) 151 43)
+  (set-frame-size (selected-frame) 151 48)
   (set-frame-position-one)
 )
 
